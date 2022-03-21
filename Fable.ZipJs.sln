@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32314.265
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fable.ZipJs", "Fable.ZipJs\Fable.ZipJs.fsproj", "{0917DB4C-1C9F-458A-9B35-34264963BA0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0917DB4C-1C9F-458A-9B35-34264963BA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0917DB4C-1C9F-458A-9B35-34264963BA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0917DB4C-1C9F-458A-9B35-34264963BA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0917DB4C-1C9F-458A-9B35-34264963BA0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D79EFE61-5404-42C5-84A4-195D08DC936A}
+	EndGlobalSection
+EndGlobal

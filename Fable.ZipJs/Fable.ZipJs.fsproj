@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	<Version>1.0.0</Version>
+	<TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>Fable.ZipJs</PackageId>
+    <Authors>kerams</Authors>
+    <Description>Fable bindings for zip.js</Description>
+    <RepositoryUrl>https://github.com/kerams/Fable.ZipJs</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/kerams/Fable.ZipJs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>fsharp;fable;zipjs;zip;zip.js</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="@zip.js/zip.js" Version="gte 2.4.0 lt 3.0" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Zip.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="*.fsproj; *.fs; *.js;" Exclude="**\*.fs.js" PackagePath="fable/" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Update="FSharp.Core" Version="4.7.2" />
+	<PackageReference Include="Fable.Browser.Blob" Version="1.2.0" />
+    <PackageReference Include="Fable.Core" Version="3.2.9" />
+  </ItemGroup>
+</Project>
