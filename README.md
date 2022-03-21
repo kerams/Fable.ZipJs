@@ -41,7 +41,7 @@ Zip.configure (jsOptions<IConfiguration> (fun x -> x.useWebWorkers <- false))
 
 The snippets also assume you're using [Fable.Promise](https://www.nuget.org/packages/Fable.Promise/) and its `promise` builder. In an Elmish application you would then pass the promises to `Cmd.OfPromise.either` or `perform`.
 
-### Compression
+### Deompression
 
 Given a file containing a zip (provided by the user via an HTML file input for instance), list its contents. For simplicity's sake, we're skipping error handling (file is not a zip), but you can easily use try-with to that end.
 
