@@ -14,7 +14,7 @@ type IConfiguration =
     /// Number of workers used simultaneously to process data. The default value is the number of logical cores returned by the attribute navigator.hardwareConcurrency or 2 if navigator is undefined.
     abstract maxWorkers: int with get, set
 
-type IReader =
+type [<AllowNullLiteral>] IReader =
     /// The size of data to read in bytes
     abstract member size: float
 
@@ -257,6 +257,10 @@ type IZipWriter =
 
     /// Close the zip file
     abstract close: ?comment: byte[] * ?options: ICloseOptions -> JS.Promise<unit>
+
+    /// Add a directory entry into the zip
+    [<Emit("$0.add($1, null, { directory = true })")>]
+    abstract addDirectory: name: string -> JS.Promise<IEntry>
 
 type IZipWriterOptions =
     /// force all the files to be written in Zip64 (false by default)
