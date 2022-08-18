@@ -29,14 +29,14 @@ npm install @zip.js/zip.js@2.4.7
 
 Firstly, you'll need to import zip.js in the Fable application. This library does not do it automatically because zip.js provides [bundles of various sizes based on usage scenarios](https://github.com/gildas-lormeau/zip.js/tree/master/dist), possibly because its tree-shakability is limited.
 
-Here we'll be using `zip-no-worker.min.js`, which allows both compression and decompression, and does not support web workers. Simultaneously, we globally configure zip.js not to use web workers. Do this once for the lifetime of your application.
+Here we'll be using `zip-no-worker.js`, which allows both compression and decompression, and does not support web workers. Simultaneously, we globally configure zip.js not to use web workers. Do this once for the lifetime of your application.
 
 ```fsharp
 open Fable.Core.JsInterop
 open Fable.ZipJs
 
-importAll "@zip.js/zip.js/dist/zip-no-worker.min.js"
-Zip.configure (jsOptions<IConfiguration> (fun x -> x.useWebWorkers <- false))
+let zip: Zip = importAll "@zip.js/zip.js/lib/zip-no-worker.js"
+zip.configure (jsOptions<IConfiguration> (fun x -> x.useWebWorkers <- false))
 ```
 
 The snippets also assume you're using [Fable.Promise](https://www.nuget.org/packages/Fable.Promise/) and its `promise` builder. In an Elmish application you would then pass the promises to `Cmd.OfPromise.either` or `perform`.
@@ -48,7 +48,7 @@ Given a file containing a zip (provided by the user via an HTML file input for i
 ```fsharp
 let listContents (file: Browser.Types.Blob) = promise {
     // Create a ZipReader capable of decompressing data in a blob.
-    let zipReader = Zip.createZipReader file
+    let zipReader = zip.createZipReader file
 
     // Get the entries in the zip.
     let! entries = zipReader.getEntries ()
@@ -77,16 +77,16 @@ Create a password-protected zip file with a single entry from some array of byte
 ```fsharp
 let zipDataWithPassword (data: byte[]) fileName password = promise {
     // The writer type determines the type of the zipped data you get at the end.
-    // If you want a byte array, use Zip.createBytesWriter.
-    let writer = Zip.createBlobWriter ()
+    // If you want a byte array, use zip.createBytesWriter.
+    let writer = zip.createBlobWriter ()
 
     // Create a ZipWriter for compressing files into the provided writer.
     // Also set a password using the optional IZipWriterOptions parameter.
-    let zipWriter = Zip.createZipWriter (writer, jsOptions<IZipWriterOptions> (fun x -> x.password <- password))
+    let zipWriter = zip.createZipWriter (writer, jsOptions<IZipWriterOptions> (fun x -> x.password <- password))
 
     // Add a file into the zip. Because the input is a byte array, wrap it in IBytesReader.
     // Additionally, you can indicate whether you're adding a directory, or set various metadata using the optional IAddOptions parameter.
-    let! addedEntry = zipWriter.add (fileName, Zip.createBytesReader data, jsOptions<IAddOptions> (fun x -> x.comment <- "blah"))
+    let! addedEntry = zipWriter.add (fileName, zip.createBytesReader data, jsOptions<IAddOptions> (fun x -> x.comment <- "blah"))
 
     // Close the ZipWriter, finalizing the zip file.
     do! zipWriter.close ()

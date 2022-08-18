@@ -317,53 +317,54 @@ type IZipWriterOptions =
     /// external file attribute of all files (undefined by default)
     abstract externalFileAttribute: float with get, set
 
+[<Erase>]
 type Zip =
     /// Create a ZipReader object. A ZipReader object helps to read the zipped content.
-    [<Emit("new zip.ZipReader($0, $1)")>]
-    static member inline createZipReader (reader: IReader, ?options: IZipReaderOptions) = jsNative<IZipReader>
+    [<Emit("new $0.ZipReader($1, $2)")>]
+    member _.createZipReader (reader: IReader, ?options: IZipReaderOptions) = jsNative<IZipReader>
 
     /// Create a ZipReader object. A ZipReader object helps to read the zipped content.
-    [<Emit("new zip.ZipReader(new zip.BlobReader($0), $1)")>]
-    static member inline createZipReader (blob: Browser.Types.Blob, ?options: IZipReaderOptions) = jsNative<IZipReader>
+    [<Emit("new $0.ZipReader(new $0.BlobReader($1), $2)")>]
+    member _.createZipReader (blob: Browser.Types.Blob, ?options: IZipReaderOptions) = jsNative<IZipReader>
 
     /// Create a ZipReader object. A ZipReader object helps to read the zipped content.
-    [<Emit("new zip.ZipReader(new zip.TextReader($0), $1)")>]
-    static member inline createZipReader (text: string, ?options: IZipReaderOptions) = jsNative<IZipReader>
+    [<Emit("new $0.ZipReader(new $0.TextReader($1), $2)")>]
+    member _.createZipReader (text: string, ?options: IZipReaderOptions) = jsNative<IZipReader>
 
     /// Create a ZipReader object. A ZipReader object helps to read the zipped content.
-    [<Emit("new zip.ZipReader(new zip.Uint8ArrayReader($0), $1)")>]
-    static member inline createZipReader (bytes: byte[], ?options: IZipReaderOptions) = jsNative<IZipReader>
+    [<Emit("new $0.ZipReader(new $0.Uint8ArrayReader($1), $2)")>]
+    member _.createZipReader (bytes: byte[], ?options: IZipReaderOptions) = jsNative<IZipReader>
 
     /// Create a ZipWriter object
-    [<Emit("new zip.ZipWriter($0, $1)")>]
-    static member inline createZipWriter (writer: IWriter, ?options: IZipWriterOptions) = jsNative<IZipWriter>
+    [<Emit("new $0.ZipWriter($1, $2)")>]
+    member _.createZipWriter (writer: IWriter, ?options: IZipWriterOptions) = jsNative<IZipWriter>
 
     /// Blob object writer constructor
-    [<Emit("new zip.BlobWriter($0)")>]
-    static member inline createBlobWriter (?mimeType: string) = jsNative<IBlobWriter>
+    [<Emit("new $0.BlobWriter($1)")>]
+    member _.createBlobWriter (?mimeType: string) = jsNative<IBlobWriter>
 
     /// string writer constructor
-    [<Emit("new zip.TextWriter()")>]
-    static member inline createStringWriter () = jsNative<IStringWriter>
+    [<Emit("new $0.TextWriter()")>]
+    member _.createStringWriter () = jsNative<IStringWriter>
 
     /// Uint8Array object writer constructor
-    [<Emit("new zip.Uint8ArrayWriter()")>]
-    static member inline createBytesWriter () = jsNative<IBytesWriter>
+    [<Emit("new $0.Uint8ArrayWriter()")>]
+    member _.createBytesWriter () = jsNative<IBytesWriter>
 
     /// Blob object reader constructor
-    [<Emit("new zip.BlobReader($0)")>]
-    static member inline createBlobReader (blob: Blob) = jsNative<IBlobReader>
+    [<Emit("new $0.BlobReader($1)")>]
+    member _.createBlobReader (blob: Blob) = jsNative<IBlobReader>
 
     /// string reader constructor
-    [<Emit("new zip.TextReader($0)")>]
-    static member inline createStringReader (text: string) = jsNative<IStringReader>
+    [<Emit("new $0.TextReader($1)")>]
+    member _.createStringReader (text: string) = jsNative<IStringReader>
 
     /// Uint8Array object reader constructor
-    [<Emit("new zip.Uint8ArrayReader($0)")>]
-    static member inline createBytesReader (bytes: byte[]) = jsNative<IBytesReader>
+    [<Emit("new $0.Uint8ArrayReader($1)")>]
+    member _.createBytesReader (bytes: byte[]) = jsNative<IBytesReader>
 
-    [<Emit("zip.configure($0)")>]
-    static member inline configure (configuration: IConfiguration) = jsNative<unit>
+    [<Emit("$0.configure($1)")>]
+    member _.configure (configuration: IConfiguration) = jsNative<unit>
 
-    [<Emit("zip.terminateWorkers()")>]
-    static member inline terminateWorkers () = jsNative<unit>
+    [<Emit("$0.terminateWorkers()")>]
+    member _.terminateWorkers () = jsNative<unit>
