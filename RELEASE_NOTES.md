@@ -1,3 +1,6 @@
+### 2.0.1 - August 20th, 2022
+- Fix `getData` APIs
+
 ### 2.0.0 - August 18th, 2022
 - Make the library compatible with ES imports. This introduces a small breaking change in how it is initialized and called:
 

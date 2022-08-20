@@ -129,18 +129,18 @@ type IEntry =
 
     /// Get the data of a zip entry
     /// Returns a promise with the output data as resolved value
-    [<Emit("$0.getData(new zip.BlobWriter(), $1)")>]
-    abstract getDataBlob: ?options: IGetDataOptions -> JS.Promise<Blob>
+    [<Emit("$0.getData($1, $2)")>]
+    abstract getDataBlob: writer: IBlobWriter * ?options: IGetDataOptions -> JS.Promise<Blob>
 
     /// Get the data of a zip entry
     /// Returns a promise with the output data as resolved value
-    [<Emit("$0.getData(new zip.Uint8ArrayWriter(), $1)")>]
-    abstract getDataBytes: ?options: IGetDataOptions -> JS.Promise<byte[]>
+    [<Emit("$0.getData($1, $2)")>]
+    abstract getDataBytes: writer: IBytesWriter * ?options: IGetDataOptions -> JS.Promise<byte[]>
 
     /// Get the data of a zip entry
     /// Returns a promise with the output data as resolved value
-    [<Emit("$0.getData(new zip.TextWriter(), $1)")>]
-    abstract getDataString: ?options: IGetDataOptions -> JS.Promise<string>
+    [<Emit("$0.getData($1, $2)")>]
+    abstract getDataString: writer: IStringWriter * ?options: IGetDataOptions -> JS.Promise<string>
 
 type IGetEntriesOptions =
     /// function tracking the task progress and having as parameters an index (number) value, a max (number) value (undefined by default) and the file entry

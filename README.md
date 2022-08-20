@@ -57,11 +57,11 @@ let listContents (file: Browser.Types.Blob) = promise {
         printfn "Name: %s, compressed size: %f, is a directory: %O" e.filename e.compressedSize e.directory
 
         // Get the decompressed file contents as a byte array.
-        let! dataBytes = e.getDataBytes ()
+        let! dataBytes = e.getDataBytes (zip.createBytesWriter ())
         // or a blob
-        let! dataBlob = e.getDataBlob ()
+        let! dataBlob = e.getDataBlob (zip.createBlobWriter ())
         // or a string
-        let! dataString = e.getDataString ()
+        let! dataString = e.getDataString (zip.createStringWriter ())
 
         // Do something with the data.
         ()
