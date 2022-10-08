@@ -7,8 +7,8 @@
     <Authors>kerams</Authors>
     <Description>Fable bindings for zip.js</Description>
     <RepositoryUrl>https://github.com/kerams/Fable.ZipJs</RepositoryUrl>
-    <PackageLicenseUrl>https://github.com/kerams/Fable.ZipJs/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageTags>fsharp;fable;zipjs;zip;zip.js</PackageTags>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>fsharp;fable;fable-binding;fable-javascript;zipjs;zip;zip.js</PackageTags>
   </PropertyGroup>
   <PropertyGroup>
     <NpmDependencies>
